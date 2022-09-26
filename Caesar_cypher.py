@@ -1,10 +1,9 @@
 def caesar_cipher(lang, k, text):
-    result, dict = [], ''
-    dictionary_lower, dictionary_upper = '', ''
+    result, dict, dictionary_lower, dictionary_upper = [], '', '', ''
     if lang == 1:
-        dictionary_lower, dictionary_upper = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя", "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ"
+        dictionary_lower, dictionary_upper = "абвгдежзийклмнопрстуфхцчшщъыьэюя", "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
     elif lang == 2:
-        dictionary_lower, dictionary_upper = "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLNOPQRSTUVWXYZ"
+        dictionary_lower, dictionary_upper = "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     for c in range(len(text)):
         if text[c] in dictionary_lower:
             dict = dictionary_lower
@@ -21,10 +20,11 @@ def caesar_cipher(lang, k, text):
                 elif i + k < 0 and text[c] == dict[i]:
                     result.append(dict[(i + k) % len(dict)])
     return ''.join(result)
-print('Выберите язык, где 1 - русский, а 2 - английский')
-a = int(input())
-print('Введите ключ сдвига')
-key = int(input())
-print('Введите шифруемый текст')
-text = input()
-print(caesar_cipher(a, key, text))
+while True:
+    print('Выберите язык, где 1 - русский, а 2 - английский')
+    a = int(input())
+    print('Введите ключ сдвига')
+    key = int(input())
+    print('Введите шифруемый текст')
+    text = input()
+    print(caesar_cipher(a, key, text))
